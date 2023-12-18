@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+  transition: background 0.4s ease-in;
+  font-family: 'Lato', sans-serif;
+  background-color: #fff;
+  overflow: auto;
+
+  &.blue {
+    background-color: #428aa6;
+  }
+}
+
+.card {
+  position: absolute;
+  width: 300px;
+  height: 225px;
+  left: -35px;
+  right: 0;
+  margin: auto;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  cursor: pointer;
+  opacity: 0.5;
+  transform: scale(0.5);
+  z-index: 1;
+  border-radius: 10px;
+  will-change: transform, opacity, box-shadow;
+
+  &.active {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    z-index: 3;
+    border-radius: 10px; // Adjust as needed
+  }
+
+  &:hover {
+    box-shadow: 0px 5px 10px rgba(66, 138, 166, 0.3);
+  }
+
+  &.left {
+    transform: translateX(-50%) scale(0.75);
+    opacity: 1;
+    z-index: 2;
+  }
+
+  &.right {
+    transform: translateX(50%) scale(0.75);
+    opacity: 1;
+    z-index: 2;
+  }
+
+  &.far-left {
+    transform: translateX(-100%) scale(0.5);
+    opacity: 1;
+    z-index: 1;
+  }
+
+  &.far-right {
+    transform: translateX(100%) scale(0.5);
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.container {
+  width: 100%;
+  // max-width: 300px;
+  height: auto;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .cards {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%; 
+    border-radius: 10px;
+    object-fit: cover; 
+  }
+}
+
+.card-title {
+  position: relative;
+  bottom: 50px; 
+  left: 50%;
+  transform: translateX(-50%);
+  color: white; 
+  background: rgba(0, 0, 0, 0.5); 
+  padding: 10px 20px; 
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  z-index: 10; 
+  opacity: 0;
+  font-size: 22px;
+
+  .card.active & {
+    opacity: 1;
+  }
+}
